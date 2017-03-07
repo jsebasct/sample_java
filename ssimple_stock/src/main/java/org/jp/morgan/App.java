@@ -2,7 +2,7 @@ package org.jp.morgan;
 
 /**
  * Hello world!
- *
+ * TODO public fields
  */
 public class App 
 {
