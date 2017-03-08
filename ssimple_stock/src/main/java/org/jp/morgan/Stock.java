@@ -51,8 +51,7 @@ abstract class Stock {
         this.trades.add(someTrade);
     }
 
-    // TODO: should throw Exception when no recorded trades ?
-    float calculateVWSP(int lastMinutes) {
+    public float calculateVWSP(int lastMinutes) {
         
         int someTime = lastMinutes * 1000 * 60;
         Timestamp limitBeforeTime = new Timestamp(System.currentTimeMillis() - someTime);
@@ -67,7 +66,7 @@ abstract class Stock {
             }
         }
 
-        float res = up / shareQuantity;
+        float res = shareQuantity > 0 ? up / shareQuantity: 0;
         return res;
     }
 

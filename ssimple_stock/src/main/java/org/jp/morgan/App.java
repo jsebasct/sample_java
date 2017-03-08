@@ -2,6 +2,8 @@ package org.jp.morgan;
 
 import java.sql.Timestamp;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Hello world!
@@ -26,6 +28,12 @@ public class App
         System.out.println(Double.MAX_VALUE);
         
         double res = Math.pow(70824.54760943209, 0.25);
+        
+        
+        List<Integer> st = null; //new ArrayList<Integer>();
+        for (Integer x : st) {
+            
+        }
         System.out.println("-->" + res);
     }
 }
