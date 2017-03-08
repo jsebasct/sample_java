@@ -11,8 +11,12 @@ package org.jp.morgan;
  */
 public class StockCommon extends Stock {
 
-    public StockCommon(int lastDividend) {
+    public StockCommon(float lastDividend) {
         super(lastDividend);
+    }
+    
+    float calculateDividendYield(int price) {
+        return getLastDividend() / price;
     }
     
 }

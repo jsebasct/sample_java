@@ -11,10 +11,10 @@ package org.jp.morgan;
  */
 public class StockPreferred extends Stock {
 
-    int fixedDividend;
+    float fixedDividend;
     int parValue;
     
-    public StockPreferred(int lastDividend, int fixedDividend, int parValue) {
+    public StockPreferred(float lastDividend, float fixedDividend, int parValue) {
         super(lastDividend);
         this.fixedDividend = fixedDividend;
         this.parValue = parValue;
@@ -22,6 +22,6 @@ public class StockPreferred extends Stock {
     
     @Override
     float calculateDividendYield(int price) {
-        return lastDividend * parValue / price;
+        return (fixedDividend/100) * parValue / price;
     }
 }
