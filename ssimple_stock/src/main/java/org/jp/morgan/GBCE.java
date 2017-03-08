@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class GBCE {
 
-    private List<Stock> stocks;
+    private final List<Stock> stocks;
 
     public GBCE() {
         stocks = new ArrayList<Stock>();
@@ -35,8 +35,6 @@ public class GBCE {
     public void addStockTrades() {
         for (Stock stock : stocks) {
             addMockStockTrade(stock);
-            float VWSP = stock.calculateVWSP(5);
-            System.out.println("Stock " + stock.getSymbol() + ": " + VWSP);
         }
     }
 
@@ -53,10 +51,8 @@ public class GBCE {
         for (Stock stock : stocks) {
             res *= stock.calculateVWSP(5);
         }
-        System.out.println("ResMult: " + res);
 
         double time = Math.pow(res, 1.0 / stocks.size());
-        System.out.println("Final Res: " + time);
         return time;
     }
 }
