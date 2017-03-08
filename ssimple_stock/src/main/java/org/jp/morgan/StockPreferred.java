@@ -12,10 +12,10 @@ package org.jp.morgan;
 public class StockPreferred extends Stock {
 
     float fixedDividend;
-    int parValue;
     
-    public StockPreferred(float lastDividend, float fixedDividend, int parValue) {
-        super(lastDividend);
+    
+    public StockPreferred(String symbol, float lastDividend, float fixedDividend, int parValue) {
+        super(symbol, lastDividend, parValue);
         this.fixedDividend = fixedDividend;
         this.parValue = parValue;
     }

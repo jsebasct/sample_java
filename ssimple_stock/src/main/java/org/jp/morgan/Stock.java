@@ -15,11 +15,17 @@ import java.util.List;
  */
 abstract class Stock {
     
+    private String symbol;
     private float lastDividend;
+    protected int parValue;
+    
     private List<Trade> trades;
 
-    Stock(float dividend) {
+    Stock(String symbol, float dividend, int parValue) {
+        this.symbol = symbol;
         lastDividend = dividend;
+        this.parValue = parValue;
+        
         trades = new ArrayList<Trade>();
     }
     
@@ -32,19 +38,12 @@ abstract class Stock {
     float getPERatio(float price) {
         return lastDividend / price;
     }
-
-//    void recordTrade(int quantity, boolean buy, float price) {
-//        this.trades.add(new Trade(quantity, buy, price));
-//    }
-//    
-//    void recordTrade(int quantity, boolean buy, float price, Timestamp time) {
-//        this.trades.add(new Trade(quantity, buy, price, time));
-//    }
     
     void recordTrade(Trade someTrade) {
         this.trades.add(someTrade);
     }
 
+    // TODO: should throw Exception when no recorded trades ?
     float calculateVWSP(int lastMinutes) {
         
         int someTime = lastMinutes * 1000 * 60;

@@ -2,23 +2,24 @@ package org.jp.morgan;
 
 import java.sql.Timestamp;
 import org.junit.Test;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
+import org.junit.Before;
 
 /**
  * Unit test for simple App.
  */
 public class AppTest {
     
-    @Test
-    public void testApp() {
-        assertTrue( true );
+    private Stock stock;
+    
+    @Before
+    public void init() {
+        int lastDividend = 1;
+        Stock stock = new StockCommon("X", lastDividend, 100);
     }
     
     @Test
     public void testDividendYieldCommon() {
-        int lastDividend = 1;
-        Stock stock = new StockCommon(lastDividend);
         
         int price = 20;
         float result = stock.calculateDividendYield(price);
@@ -27,8 +28,6 @@ public class AppTest {
     
     @Test
     public void testDividendYieldCommonOverZero() {
-        int lastDividend = 0;
-        Stock stock = new StockCommon(lastDividend);
         
         int price = 20;
         float result = stock.calculateDividendYield(price);
@@ -40,7 +39,7 @@ public class AppTest {
         int lastDividend = 8;
         int fixedDividend = 2;
         int parValue = 100;
-        Stock stock = new StockPreferred(lastDividend, fixedDividend, parValue);
+        Stock stock = new StockPreferred("X", lastDividend, fixedDividend, parValue);
         
         int price = 10;
         float result = stock.calculateDividendYield(price);
@@ -49,8 +48,8 @@ public class AppTest {
     
     @Test
     public void testPERatio() {
-        int lastDividend = 8;
-        Stock stock = new StockCommon(lastDividend);
+//        int lastDividend = 8;
+//        Stock stock = new StockCommon(lastDividend);
         
         int price = 10;
         float ratio = stock.getPERatio(price);
@@ -59,9 +58,6 @@ public class AppTest {
     
     @Test
     public void testVWAP() {
-        
-        int lastDividend = 8;
-        Stock stock = new StockCommon(lastDividend);
         
         float price = 10;
         boolean buy = true;
@@ -78,9 +74,6 @@ public class AppTest {
     
     @Test
     public void testVWAPWithLimitTime() {
-        
-        int lastDividend = 8;
-        Stock stock = new StockCommon(lastDividend);
         
         float price = 10;
         boolean buy = true;
