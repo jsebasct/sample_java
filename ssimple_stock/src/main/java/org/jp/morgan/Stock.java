@@ -23,7 +23,7 @@ abstract class Stock {
 
     Stock(String symbol, float dividend, int parValue) {
         this.symbol = symbol;
-        lastDividend = dividend;
+        this.lastDividend = dividend;
         this.parValue = parValue;
         
         trades = new ArrayList<Trade>();
@@ -31,12 +31,16 @@ abstract class Stock {
     
     abstract float calculateDividendYield(int price);
 
+    public String getSymbol() {
+        return symbol;
+    }
+    
     public float getLastDividend() {
         return lastDividend;
     }
 
     float getPERatio(float price) {
-        return lastDividend / price;
+        return price / getLastDividend();
     }
     
     void recordTrade(Trade someTrade) {

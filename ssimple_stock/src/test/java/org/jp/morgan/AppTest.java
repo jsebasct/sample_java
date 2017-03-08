@@ -15,12 +15,11 @@ public class AppTest {
     @Before
     public void init() {
         int lastDividend = 1;
-        Stock stock = new StockCommon("X", lastDividend, 100);
+        stock = new StockCommon("StockX", lastDividend, 100);
     }
     
     @Test
     public void testDividendYieldCommon() {
-        
         int price = 20;
         float result = stock.calculateDividendYield(price);
         assertEquals(0.05, result, 0.01);
@@ -28,8 +27,8 @@ public class AppTest {
     
     @Test
     public void testDividendYieldCommonOverZero() {
-        
         int price = 20;
+        stock = new StockCommon("StockX", 0, 100);
         float result = stock.calculateDividendYield(price);
         assertEquals(0.0, result, 0.01);
     }
@@ -37,9 +36,9 @@ public class AppTest {
     @Test
     public void testDividendYieldPreferred() {
         int lastDividend = 8;
-        int fixedDividend = 2;
+        int fixedDividendPercent = 2;
         int parValue = 100;
-        Stock stock = new StockPreferred("X", lastDividend, fixedDividend, parValue);
+        Stock stock = new StockPreferred("X", lastDividend, fixedDividendPercent, parValue);
         
         int price = 10;
         float result = stock.calculateDividendYield(price);
@@ -53,22 +52,17 @@ public class AppTest {
         
         int price = 10;
         float ratio = stock.getPERatio(price);
-        assertEquals(0.8, ratio, 0.01);
+        assertEquals(10.0f, ratio, 0.01);
     }
     
     @Test
     public void testVWAP() {
-        
-        float price = 10;
         boolean buy = true;
-        int quantity = 100;
-        
-        stock.recordTrade( new Trade(quantity, buy, price));
+        stock.recordTrade( new Trade(100, buy, 10));
         stock.recordTrade( new Trade(300, buy, 8));
         stock.recordTrade( new Trade(200, buy, 11));
         
         float res = stock.calculateVWSP(5);
-        
         assertEquals(9.333333f, res, Float.MIN_VALUE);
     }
     

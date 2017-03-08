@@ -13,7 +13,6 @@ public class StockPreferred extends Stock {
 
     float fixedDividend;
     
-    
     public StockPreferred(String symbol, float lastDividend, float fixedDividend, int parValue) {
         super(symbol, lastDividend, parValue);
         this.fixedDividend = fixedDividend;

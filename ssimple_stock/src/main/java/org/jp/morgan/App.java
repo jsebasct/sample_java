@@ -24,5 +24,8 @@ public class App
         System.out.println(max);
         System.out.println(Float.MAX_VALUE);
         System.out.println(Double.MAX_VALUE);
+        
+        double res = Math.pow(70824.54760943209, 0.25);
+        System.out.println("-->" + res);
     }
 }
