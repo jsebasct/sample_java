@@ -15,11 +15,11 @@ import java.util.List;
  */
 abstract class Stock {
     
-    private String symbol;
-    private float lastDividend;
-    protected int parValue;
+    private final String symbol;
+    private final double lastDividend;
+    private final int parValue;
     
-    private List<Trade> trades;
+    private final List<Trade> trades;
 
     Stock(String symbol, float dividend, int parValue) {
         this.symbol = symbol;
@@ -29,21 +29,25 @@ abstract class Stock {
         trades = new ArrayList<Trade>();
     }
     
-    abstract float calculateDividendYield(int price);
+    abstract double calculateDividendYield(int price);
 
     public String getSymbol() {
         return symbol;
     }
     
-    public float getLastDividend() {
+    public double getLastDividend() {
         return lastDividend;
     }
+    
+    public int getParValue() {
+        return parValue;
+    }
 
-    float getPERatio(float price) {
+    public double getPERatio(float price) {
         return price / getLastDividend();
     }
     
-    void recordTrade(Trade someTrade) {
+    public void recordTrade(Trade someTrade) {
         this.trades.add(someTrade);
     }
 

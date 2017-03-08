@@ -6,9 +6,9 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 
 /**
- * Unit test for simple App.
+ * Unit test for Stock.
  */
-public class AppTest {
+public class StockTest {
     
     private Stock stock;
     
@@ -21,7 +21,7 @@ public class AppTest {
     @Test
     public void testDividendYieldCommon() {
         int price = 20;
-        float result = stock.calculateDividendYield(price);
+        double result = stock.calculateDividendYield(price);
         assertEquals(0.05, result, 0.01);
     }
     
@@ -29,7 +29,7 @@ public class AppTest {
     public void testDividendYieldCommonOverZero() {
         int price = 20;
         stock = new StockCommon("StockX", 0, 100);
-        float result = stock.calculateDividendYield(price);
+        double result = stock.calculateDividendYield(price);
         assertEquals(0.0, result, 0.01);
     }
     
@@ -41,17 +41,14 @@ public class AppTest {
         Stock stock = new StockPreferred("X", lastDividend, fixedDividendPercent, parValue);
         
         int price = 10;
-        float result = stock.calculateDividendYield(price);
+        double result = stock.calculateDividendYield(price);
         assertEquals(0.2, result, 0.01);
     }
     
     @Test
     public void testPERatio() {
-//        int lastDividend = 8;
-//        Stock stock = new StockCommon(lastDividend);
-        
         int price = 10;
-        float ratio = stock.getPERatio(price);
+        double ratio = stock.getPERatio(price);
         assertEquals(10.0f, ratio, 0.01);
     }
     

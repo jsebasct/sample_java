@@ -15,7 +15,7 @@ public class StockCommon extends Stock {
         super(symbol, lastDividend, parValue);
     }
     
-    float calculateDividendYield(int price) {
+    public double calculateDividendYield(int price) {
         return getLastDividend() / price;
     }
     

@@ -16,11 +16,10 @@ public class StockPreferred extends Stock {
     public StockPreferred(String symbol, float lastDividend, float fixedDividend, int parValue) {
         super(symbol, lastDividend, parValue);
         this.fixedDividend = fixedDividend;
-        this.parValue = parValue;
     }
     
     @Override
-    float calculateDividendYield(int price) {
-        return (fixedDividend/100) * parValue / price;
+    public double calculateDividendYield(int price) {
+        return (fixedDividend/100) * getParValue() / price;
     }
 }
